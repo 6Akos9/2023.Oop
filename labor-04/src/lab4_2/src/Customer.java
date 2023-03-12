@@ -1,17 +1,13 @@
-import java.util.Arrays;
 import java.util.ArrayList;
 
 public class Customer {
     private final String firstName;
     private String lastName;
-    private int numAccounts;
-    public static final int MAX_ACCOUNTS = 10;
     private final ArrayList<BankAccount> accounts = new ArrayList<>();
 
-    public Customer(String firstName, String lastName){
+    public Customer(String firstName, String lastName, int accounts){
         this.firstName = firstName;
         this.lastName = lastName;
-        this.numAccounts = 0;
     }
 
     public String getFirstName() {
@@ -26,34 +22,32 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public int getNumAccounts() {
-        return numAccounts;
+    public ArrayList<BankAccount> getAccounts() {
+        return accounts;
     }
 
     public void addAccount(BankAccount account){
-        if (numAccounts < MAX_ACCOUNTS){
-            accounts.set(numAccounts++, account);
+        if (accounts.size() < 10){
+            accounts.add(account);
         }
         else{
-            System.out.println("Maxmimum number of accounts reached!");
+            System.out.println("Maximum number of accounts reached!");
         }
     }
 
     public BankAccount getAccount(String accountNumber) {
-        for (int i = 0; i < numAccounts; i++) {
-            if (accounts.get(i).getAccountNumber().equals(accountNumber)){
-                return accounts.get(i);
+        for (BankAccount account : accounts) {
+            if (account.getAccountNumber().equals(accountNumber)){
+                return account;
             }
         }
         return null;
     }
+
     public void closeAccount(String accountNumber){
-        for (int i = 0; i < numAccounts; i++) {
-            if (accounts.get(i).getAccountNumber().equals(accountNumber)){
-                for (int j = 0; j < numAccounts - 1; j++) {
-                    accounts.set(j, accounts.get(j + 1));
-                }
-                accounts.set(--numAccounts, null);
+        for (BankAccount account : accounts) {
+            if (account.getAccountNumber().equals(accountNumber)){
+                accounts.remove(account);
                 return;
             }
         }
@@ -65,8 +59,8 @@ public class Customer {
         return "Customer " +
                 "| firstName='" + firstName + '\'' +
                 "| lastName='" + lastName + '\'' +
-                "| numAccounts=" + numAccounts +
-                "| accounts=" + Arrays.toString(new ArrayList[]{accounts}) +
+                "| numAccounts=" + accounts.size() +
+                "| accounts=" + accounts +
                 '|';
     }
 }
