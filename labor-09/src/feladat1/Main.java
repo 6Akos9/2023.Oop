@@ -1,4 +1,4 @@
-package oop.labor09;
+package feladat1;
 
 
 import java.util.Random;

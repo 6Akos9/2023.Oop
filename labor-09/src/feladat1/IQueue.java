@@ -1,6 +1,4 @@
-package oop.labor09;
-
-import java.util.ArrayList;
+package feladat1;
 
 public interface IQueue {
     boolean isEmpty();

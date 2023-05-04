@@ -1,11 +1,11 @@
-package oop.labor09;
+package feladat1;
 
 import java.util.ArrayList;
 
 public class ArrayListQueue implements IQueue {
 
-    private ArrayList<Object> items;
-    private int CAPACITY;
+    private final ArrayList<Object> items;
+    private final int CAPACITY;
 
     public ArrayListQueue(int CAPACITY) {
         this.items = new ArrayList<>();

@@ -1,8 +1,8 @@
-package oop.labor09;
+package feladat1;
 
 public class CircularQueue implements IQueue{
-    private int CAPACITY;
-    private Object[] items;
+    private final int CAPACITY;
+    private final Object[] items;
     private int front;
     private int rear;
 
